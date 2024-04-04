@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Product A",
+    "description": "UN PRODUCTO A",
+    "price": 15,
+    "thumbnail": "ruta/imagenA.jpg",
+    "code": "P001",
+    "stock": 10,
+    "id": 1
+  },
+  {
+    "title": "PRODUCTO B MODIFICADO",
+    "description": "UN PRODUCTO B",
+    "price": 35,
+    "thumbnail": "ruta/imagenB.jpg",
+    "code": "P002",
+    "stock": 7,
+    "id": 2
+  },
+  {
+    "title": "Producto D",
+    "description": "un prod D",
+    "price": 30,
+    "thumbnail": "ruta/imagenD.jpg",
+    "code": "P004",
+    "stock": 5,
+    "id": 4
+  }
+]

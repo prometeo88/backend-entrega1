@@ -1,7 +1,10 @@
+const fs = require('fs')
+
 class ProductManager {
-    constructor() {
+    constructor(filePath) {
         this.products = [];
         this.nextId = 1;
+        this.path = filePath
     }
 
     addProduct(product) {
@@ -16,6 +19,7 @@ class ProductManager {
 
         product.id = this.nextId++;
         this.products.push(product);
+        this.saveProducts();
     }
 
     getProducts() {
@@ -44,9 +48,53 @@ class ProductManager {
     isCodeDuplicate(code) {
         return this.products.some(p => p.code === code);
     }
-}
 
-const productManager = new ProductManager();
+    updateProduct(id, updatedProduct) {
+        const index = this.products.findIndex(p => p.id === id);
+        if (index !== -1) {
+        this.products[index] = { ...this.products[index], ...updatedProduct };
+        this.saveProducts();
+            console.log("Producto actualizado correctamente.");
+        } else {
+            console.log("ERROR: PRODUCTO NO ENCONTRADO");
+        }
+}
+    deleteProducts(id){
+        const index = this.products.findIndex(p => p.id === id);
+        if (index !== -1) { 
+            this.products.splice(index, 1);
+            this.saveProducts();
+            console.log("Producto eliminado con exito");
+        }else {
+            console.log("Error al eliminar el producto ")
+        }
+
+        }
+
+    saveProducts(){
+        try {
+            const data = JSON.stringify(this.products,null,2);
+            fs.writeFileSync(this.path,data);
+            console.log("Productos guardados correctamente en archivo")
+        } catch (err){
+            console.log("ERRROR: NO SE PUDO GUARDAR LOS PRODUCTOS")
+        }
+    }
+        
+        loadProducts(){
+        try {
+            const data = fs.readFileSync(this.path,'utf8')
+            this.products = JSON.parse(data)
+        } catch (err) {
+            console.log("ERROR: NO SE PUDO LEER LOS PRODUCTOS")
+        }
+    }
+
+
+    }
+
+
+const productManager = new ProductManager('productos.json');
 
 productManager.addProduct({
     title: "Product A",
@@ -76,7 +124,22 @@ productManager.addProduct({
 });
 
 const products = productManager.getProducts();
-const productsById = productManager.getProductById(3);
 
 console.log(products);
-console.log(productsById);
+
+const updatedProduct = productManager.updateProduct(2, { title: "PRODUCTO B MODIFICADO", price:35} )
+
+console.log(products);
+
+const deleteProducts = productManager.deleteProducts(3)
+
+productManager.addProduct({
+    title: "Producto D",
+    description: "un prod D",
+    price: 30,
+    thumbnail: "ruta/imagenD.jpg",
+    code:"P004",
+    stock: 5,
+})
+
+
