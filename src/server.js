@@ -45,6 +45,27 @@ try {
 }
 });
 
+app.get('/products/:pid', async (req, res)=>{
+    try {  
+    const productId = parseInt(req.params.pid)
+    await productManager.loadProducts()
+    const product = productManager.getProductById(productId)
+if(product){
+    res.json(product)}
+else{
+    const respuestaE = `<p style="color:red">PRODUCTO NO ENCONTRADO</p>`;
+    res.status(400).send(respuestaE)
+
+    }
+}
+    catch (error) {
+        console.log("ERROR AL ENCONTRAR PRODUCTO")
+                
+    }
+
+
+})
+
 
 
 app.listen(PORT, () => {
