@@ -79,9 +79,9 @@ class ProductManager {
         } catch (err){
             console.log("ERRROR: NO SE PUDO GUARDAR LOS PRODUCTOS")
         }
-    }
+    };
         
-        loadProducts(){
+      loadProducts(){
         try {
             const data = fs.readFileSync(this.path,'utf8')
             this.products = JSON.parse(data)
@@ -89,57 +89,16 @@ class ProductManager {
             console.log("ERROR: NO SE PUDO LEER LOS PRODUCTOS")
         }
     }
+        
+}
 
+const cargar = new ProductManager('productos.json')
 
-    }
+cargar.loadProducts()
 
+const datos = cargar.getProducts()
 
-const productManager = new ProductManager('productos.json');
+console.log(datos)
 
-productManager.addProduct({
-    title: "Product A",
-    description: "UN PRODUCTO A",
-    price: 15,
-    thumbnail: "ruta/imagenA.jpg",
-    code: "P001",
-    stock: 10,
-});
-
-productManager.addProduct({
-    title: "Product B",
-    description: "UN PRODUCTO B",
-    price: 15,
-    thumbnail: "ruta/imagenB.jpg",
-    code: "P002",
-    stock: 7,
-});
-
-productManager.addProduct({
-    title: "Product C",
-    description: "UN PRODUCTO C",
-    price: 15,
-    thumbnail: "ruta/imagenA.jpg",
-    code: "P003",
-    stock: 4,
-});
-
-const products = productManager.getProducts();
-
-console.log(products);
-
-const updatedProduct = productManager.updateProduct(2, { title: "PRODUCTO B MODIFICADO", price:35} )
-
-console.log(products);
-
-const deleteProducts = productManager.deleteProducts(3)
-
-productManager.addProduct({
-    title: "Producto D",
-    description: "un prod D",
-    price: 30,
-    thumbnail: "ruta/imagenD.jpg",
-    code:"P004",
-    stock: 5,
-})
-
+module.exports = ProductManager;
 
