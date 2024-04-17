@@ -92,13 +92,7 @@ class ProductManager {
         
 }
 
-const cargar = new ProductManager('productos.json')
 
-cargar.loadProducts()
-
-const datos = cargar.getProducts()
-
-console.log(datos)
 
 module.exports = ProductManager;
 

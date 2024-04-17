@@ -1,29 +1,47 @@
 [
   {
-    "title": "Product A",
-    "description": "UN PRODUCTO A",
-    "price": 15,
+    "title": "PRODUCTO A",
+    "description": "un producto A",
+    "price": 20,
     "thumbnail": "ruta/imagenA.jpg",
-    "code": "P001",
-    "stock": 10,
+    "code": 1,
+    "stock": 55,
     "id": 1
   },
   {
-    "title": "PRODUCTO B MODIFICADO",
-    "description": "UN PRODUCTO B",
-    "price": 35,
+    "title": "PRODUCTO B",
+    "description": "un producto B",
+    "price": 20,
     "thumbnail": "ruta/imagenB.jpg",
-    "code": "P002",
-    "stock": 7,
+    "code": 2,
+    "stock": 50,
     "id": 2
   },
   {
-    "title": "Producto D",
-    "description": "un prod D",
-    "price": 30,
+    "title": "PRODUCTO C",
+    "description": "un producto C",
+    "price": 20,
+    "thumbnail": "ruta/imagenC.jpg",
+    "code": 3,
+    "stock": 60,
+    "id": 3
+  },
+  {
+    "title": "PRODUCTO D",
+    "description": "un producto D",
+    "price": 20,
     "thumbnail": "ruta/imagenD.jpg",
-    "code": "P004",
-    "stock": 5,
+    "code": 4,
+    "stock": 65,
     "id": 4
+  },
+  {
+    "title": "PRODUCTO E",
+    "description": "un producto E",
+    "price": 20,
+    "thumbnail": "ruta/imagenE.jpg",
+    "code": 5,
+    "stock": 70,
+    "id": 5
   }
 ]
